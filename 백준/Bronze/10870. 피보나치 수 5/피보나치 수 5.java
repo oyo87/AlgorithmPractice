@@ -13,13 +13,10 @@ public class Main {
 
 	static int fibo(int n) {
 
-		int sum = 0;
 		if (n == 0)
 			return 0;
 		if (n == 1)
 			return 1;
-		sum = fibo(n - 1) + fibo(n - 2);
-
-		return sum;
+		return fibo(n - 1) + fibo(n - 2);
 	}
 }
