@@ -8,7 +8,7 @@ class Solution {
     public int solution(int n, String[] data) {
         /*
         케이스수 8명 = 40400
-        모든 조합후 조건 검색해보자
+        모든 순열 찾은 후 조건에 맞는지 완탐
         */
         gData = data;
         boolean[] visited = new boolean[name.length];
@@ -30,6 +30,7 @@ class Solution {
                 int youIndex = 0;
                 int diff = 0; // 실제 거리
                 
+                //인덱스 찾기
                 for(int j=0; j<arr.length; j++){
                     if(arr[j].charAt(0) == me){
                         meIndex = j;
@@ -40,6 +41,7 @@ class Solution {
                 }
                 diff = Math.abs(meIndex - youIndex);
                 
+                //조건에 해당하는지 확인. 조건충족하지않으면 return
                 if(sign == '='){
                     if(diff != dist)
                         return ; 
@@ -56,7 +58,7 @@ class Solution {
             return ;
         }
         
-        //조합
+        //순열
         for(int i=0; i<name.length; i++){
             if(!visited[i]){
                 visited[i] = true;
