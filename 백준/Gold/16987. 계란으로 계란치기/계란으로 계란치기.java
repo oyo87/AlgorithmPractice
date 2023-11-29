@@ -42,38 +42,30 @@ public class Main {
             return;
         }
 
-        int[][] copiedEgg = new int[N][2];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < 2; j++) {
-                copiedEgg[i][j] = egg[i][j];
-            }
-        }
-
-        if (copiedEgg[now][0] <= 0 || brokenEgg == N - 1) {//현재 계란이 깨졌거나, 나머지 모든 계란이 깨진 상태
-            dfs(copiedEgg, brokenEgg, now + 1);
+        if (egg[now][0] <= 0 || brokenEgg == N - 1) {//현재 계란이 깨졌거나, 나머지 모든 계란이 깨진 상태
+            dfs(egg, brokenEgg, now + 1);
             return;
         }
-
 
         for (int i = 0; i < N; i++) {
             if (i == now)
                 continue;
 
-            if (0 < copiedEgg[i][0]) {
+            if (0 < egg[i][0]) {
                 int brokenCount = 0;
 
-                copiedEgg[i][0] -= copiedEgg[now][1];
-                copiedEgg[now][0] -= copiedEgg[i][1];
+                egg[i][0] -= egg[now][1];
+                egg[now][0] -= egg[i][1];
 
-                if (copiedEgg[i][0] <= 0)
+                if (egg[i][0] <= 0)
                     brokenCount++;
-                if (copiedEgg[now][0] <= 0)
+                if (egg[now][0] <= 0)
                     brokenCount++;
 
-                dfs(copiedEgg, brokenEgg + brokenCount, now + 1);
+                dfs(egg, brokenEgg + brokenCount, now + 1);
 
-                copiedEgg[i][0] += copiedEgg[now][1];
-                copiedEgg[now][0] += copiedEgg[i][1];
+                egg[i][0] += egg[now][1];
+                egg[now][0] += egg[i][1];
             }
         }
 
