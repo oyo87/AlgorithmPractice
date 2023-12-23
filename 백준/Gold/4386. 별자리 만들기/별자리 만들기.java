@@ -46,7 +46,6 @@ public class Main {
 
                 double cost = Math.sqrt(Math.pow(stars[i][0] - stars[j][0], 2) + Math.pow(stars[i][1] - stars[j][1], 2));
                 pq.add(new Double[]{(double) i, (double) j, cost});
-                pq.add(new Double[]{(double) j, (double) i, cost});
             }
         }
 
